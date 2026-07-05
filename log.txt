@@ -1,0 +1,695 @@
+openocd -d3 -f interface/ftdi/ft232h-module-swd.cfg -f target/stm32f4x.cfg | log.txt
+Open On-Chip Debugger 0.12.0
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+User : 3 6 options.c:52 configuration_output_handler(): debug_level: 3
+User : 4 6 options.c:52 configuration_output_handler(): 
+Debug: 5 6 options.c:233 add_default_dirs(): bindir=/usr/bin
+Debug: 6 6 options.c:234 add_default_dirs(): pkgdatadir=/usr/share/openocd
+Debug: 7 6 options.c:235 add_default_dirs(): exepath=/usr/bin
+Debug: 8 6 options.c:236 add_default_dirs(): bin2data=../share/openocd
+Debug: 9 6 configuration.c:33 add_script_search_dir(): adding /home/varun/.config/openocd
+Debug: 10 6 configuration.c:33 add_script_search_dir(): adding /home/varun/.openocd
+Debug: 11 6 configuration.c:33 add_script_search_dir(): adding /usr/bin/../share/openocd/site
+Debug: 12 6 configuration.c:33 add_script_search_dir(): adding /usr/bin/../share/openocd/scripts
+Debug: 13 6 command.c:155 script_debug(): command - ocd_find interface/ftdi/ft232h-module-swd.cfg
+Debug: 14 6 configuration.c:88 find_file(): found /usr/bin/../share/openocd/scripts/interface/ftdi/ft232h-module-swd.cfg
+Debug: 15 7 command.c:155 script_debug(): command - adapter driver ftdi
+Debug: 16 7 command.c:155 script_debug(): command - ftdi vid_pid 0x0403 0x6014
+Debug: 17 7 command.c:155 script_debug(): command - ftdi layout_init 0x0030 0x003b
+Debug: 18 7 command.c:155 script_debug(): command - ftdi layout_signal nSRST -data 0x0010 -oe 0x0010
+Debug: 19 7 command.c:155 script_debug(): command - ftdi layout_signal nTRST -data 0x0020 -oe 0x0020
+Debug: 20 7 command.c:155 script_debug(): command - ftdi layout_signal SWD_EN -data 0
+Debug: 21 7 command.c:155 script_debug(): command - ftdi layout_signal SWDIO_OE -data 0
+Debug: 22 7 command.c:155 script_debug(): command - transport select swd
+Info : 23 7 ftdi.c:1030 ftdi_swd_init(): FTDI SWD mode enabled
+User : 24 7 options.c:52 configuration_output_handler(): swdUser : 25 7 options.c:52 configuration_output_handler(): 
+Debug: 26 7 command.c:155 script_debug(): command - ocd_find target/stm32f4x.cfg
+Debug: 27 7 configuration.c:88 find_file(): found /usr/bin/../share/openocd/scripts/target/stm32f4x.cfg
+Debug: 28 8 command.c:155 script_debug(): command - ocd_find target/swj-dp.tcl
+Debug: 29 8 configuration.c:88 find_file(): found /usr/bin/../share/openocd/scripts/target/swj-dp.tcl
+Debug: 30 8 command.c:155 script_debug(): command - transport select
+Debug: 31 8 command.c:155 script_debug(): command - ocd_find mem_helper.tcl
+Debug: 32 8 configuration.c:88 find_file(): found /usr/bin/../share/openocd/scripts/mem_helper.tcl
+Debug: 33 8 command.c:155 script_debug(): command - add_usage_text mrw address
+Debug: 34 8 command.c:155 script_debug(): command - add_help_text mrw Returns value of word in memory.
+Debug: 35 8 command.c:155 script_debug(): command - add_usage_text mrh address
+Debug: 36 8 command.c:155 script_debug(): command - add_help_text mrh Returns value of halfword in memory.
+Debug: 37 8 command.c:155 script_debug(): command - add_usage_text mrb address
+Debug: 38 8 command.c:155 script_debug(): command - add_help_text mrb Returns value of byte in memory.
+Debug: 39 8 command.c:155 script_debug(): command - add_usage_text mmw address setbits clearbits
+Debug: 40 9 command.c:155 script_debug(): command - add_help_text mmw Modify word in memory. new_val = (old_val & ~clearbits) | setbits;
+Debug: 41 9 command.c:155 script_debug(): command - transport select
+Debug: 42 9 command.c:155 script_debug(): command - transport select
+Debug: 43 9 command.c:155 script_debug(): command - transport select
+Debug: 44 9 command.c:155 script_debug(): command - swd newdap stm32f4x cpu -irlen 4 -ircapture 0x1 -irmask 0xf -expected-id 0x2ba01477
+Debug: 45 9 tcl.c:557 jim_newtap_cmd(): Creating New Tap, Chip: stm32f4x, Tap: cpu, Dotted: stm32f4x.cpu, 8 params
+Debug: 46 9 core.c:1474 jtag_tap_init(): Created Tap: stm32f4x.cpu @ abs position 0, irlen 0, capture: 0x0 mask: 0x0
+Debug: 47 9 command.c:155 script_debug(): command - dap create stm32f4x.dap -chain-position stm32f4x.cpu
+Debug: 48 9 command.c:155 script_debug(): command - transport select
+Debug: 49 10 command.c:155 script_debug(): command - target create stm32f4x.cpu cortex_m -endian little -dap stm32f4x.dap
+Debug: 50 10 command.c:289 register_command(): command 'tpiu' is already registered
+Debug: 51 10 command.c:289 register_command(): command 'rtt' is already registered
+Debug: 52 10 command.c:155 script_debug(): command - stm32f4x.cpu configure -work-area-phys 0x20000000 -work-area-size 0x8000 -work-area-backup 0
+Debug: 53 10 target.c:2199 target_free_all_working_areas_restore(): freeing all working areas
+Debug: 54 10 target.c:2199 target_free_all_working_areas_restore(): freeing all working areas
+Debug: 55 10 target.c:2199 target_free_all_working_areas_restore(): freeing all working areas
+Debug: 56 10 command.c:155 script_debug(): command - flash bank stm32f4x.flash stm32f2x 0 0 0 0 stm32f4x.cpu
+Debug: 57 10 tcl.c:1305 handle_flash_bank_command(): 'stm32f2x' driver usage field missing
+Debug: 58 10 command.c:155 script_debug(): command - flash bank stm32f4x.otp stm32f2x 0x1fff7800 0 0 0 stm32f4x.cpu
+Debug: 59 10 command.c:289 register_command(): command 'stm32f2x' is already registered
+Debug: 60 10 command.c:289 register_command(): command 'stm32f2x lock' is already registered
+Debug: 61 10 command.c:289 register_command(): command 'stm32f2x unlock' is already registered
+Debug: 62 10 command.c:289 register_command(): command 'stm32f2x mass_erase' is already registered
+Debug: 63 10 command.c:289 register_command(): command 'stm32f2x options_read' is already registered
+Debug: 64 10 command.c:289 register_command(): command 'stm32f2x options_write' is already registered
+Debug: 65 10 command.c:289 register_command(): command 'stm32f2x optcr2_write' is already registered
+Debug: 66 10 command.c:289 register_command(): command 'stm32f2x otp' is already registered
+Debug: 67 10 tcl.c:1305 handle_flash_bank_command(): 'stm32f2x' driver usage field missing
+Debug: 68 10 command.c:155 script_debug(): command - adapter speed 2000
+Debug: 69 10 adapter.c:251 adapter_config_khz(): handle adapter khz
+Debug: 70 10 adapter.c:215 adapter_khz_to_speed(): convert khz to adapter specific speed value
+Debug: 71 10 adapter.c:215 adapter_khz_to_speed(): convert khz to adapter specific speed value
+Debug: 72 10 command.c:155 script_debug(): command - adapter srst delay 100
+Debug: 73 11 command.c:155 script_debug(): command - transport select
+Debug: 74 11 command.c:155 script_debug(): command - reset_config srst_nogate
+Debug: 75 11 command.c:155 script_debug(): command - transport select
+Debug: 76 11 command.c:155 script_debug(): command - cortex_m reset_config sysresetreq
+Debug: 77 11 command.c:155 script_debug(): command - stm32f4x.cpu configure -event examine-end 
+	# Enable debug during low power modes (uses more power)
+	# DBGMCU_CR |= DBG_STANDBY | DBG_STOP | DBG_SLEEP
+	mmw 0xE0042004 0x00000007 0
+
+	# Stop watchdog counters during halt
+	# DBGMCU_APB1_FZ |= DBG_IWDG_STOP | DBG_WWDG_STOP
+	mmw 0xE0042008 0x00001800 0
+
+Debug: 78 11 command.c:155 script_debug(): command - tpiu create stm32f4x.tpiu -dap stm32f4x.dap -ap-num 0 -baseaddr 0xE0040000
+Debug: 79 11 command.c:155 script_debug(): command - stm32f4x.tpiu configure -event pre-enable _proc_pre_enable_stm32f4x.tpiu stm32f4x
+Debug: 80 11 command.c:155 script_debug(): command - stm32f4x.cpu configure -event reset-init 
+	# Configure PLL to boost clock to HSI x 4 (64 MHz)
+	mww 0x40023804 0x08012008   ;# RCC_PLLCFGR 16 Mhz /8 (M) * 128 (N) /4(P)
+	mww 0x40023C00 0x00000102   ;# FLASH_ACR = PRFTBE | 2(Latency)
+	mmw 0x40023800 0x01000000 0 ;# RCC_CR |= PLLON
+	sleep 10                    ;# Wait for PLL to lock
+	mmw 0x40023808 0x00001000 0 ;# RCC_CFGR |= RCC_CFGR_PPRE1_DIV2
+	mmw 0x40023808 0x00000002 0 ;# RCC_CFGR |= RCC_CFGR_SW_PLL
+
+	# Boost JTAG frequency
+	adapter speed 8000
+
+Debug: 81 11 command.c:155 script_debug(): command - stm32f4x.cpu configure -event reset-start 
+	# Reduce speed since CPU speed will slow down to 16MHz with the reset
+	adapter speed 2000
+
+Info : 82 11 server.c:297 add_service(): Listening on port 6666 for tcl connections
+Info : 83 11 server.c:297 add_service(): Listening on port 4444 for telnet connections
+Debug: 84 11 command.c:155 script_debug(): command - init
+Debug: 85 11 command.c:155 script_debug(): command - target init
+Debug: 86 11 command.c:155 script_debug(): command - target names
+Debug: 87 11 command.c:155 script_debug(): command - stm32f4x.cpu cget -event gdb-flash-erase-start
+Debug: 88 11 command.c:155 script_debug(): command - stm32f4x.cpu configure -event gdb-flash-erase-start reset init
+Debug: 89 11 command.c:155 script_debug(): command - stm32f4x.cpu cget -event gdb-flash-write-end
+Debug: 90 12 command.c:155 script_debug(): command - stm32f4x.cpu configure -event gdb-flash-write-end reset halt
+Debug: 91 12 command.c:155 script_debug(): command - stm32f4x.cpu cget -event gdb-attach
+Debug: 92 12 command.c:155 script_debug(): command - stm32f4x.cpu configure -event gdb-attach halt 1000
+Debug: 93 12 target.c:1657 handle_target_init_command(): Initializing targets...
+Debug: 94 12 semihosting_common.c:109 semihosting_common_init():  
+Debug: 95 12 ftdi.c:654 ftdi_initialize(): ftdi interface using shortest path jtag state transitions
+Debug: 96 32 mpsse.c:412 mpsse_purge(): -
+Debug: 97 33 mpsse.c:693 mpsse_loopback_config(): off
+Debug: 98 33 mpsse.c:738 mpsse_set_frequency(): target 2000000 Hz
+Debug: 99 33 mpsse.c:730 mpsse_rtck_config(): off
+Debug: 100 33 mpsse.c:719 mpsse_divide_by_5_config(): off
+Debug: 101 33 mpsse.c:699 mpsse_set_divisor(): 14
+Debug: 102 33 mpsse.c:762 mpsse_set_frequency(): actually 2000000 Hz
+Debug: 103 33 adapter.c:215 adapter_khz_to_speed(): convert khz to adapter specific speed value
+Debug: 104 33 adapter.c:219 adapter_khz_to_speed(): have adapter set up
+Debug: 105 33 mpsse.c:738 mpsse_set_frequency(): target 2000000 Hz
+Debug: 106 33 mpsse.c:730 mpsse_rtck_config(): off
+Debug: 107 33 mpsse.c:719 mpsse_divide_by_5_config(): off
+Debug: 108 33 mpsse.c:699 mpsse_set_divisor(): 14
+Debug: 109 33 mpsse.c:762 mpsse_set_frequency(): actually 2000000 Hz
+Debug: 110 33 adapter.c:215 adapter_khz_to_speed(): convert khz to adapter specific speed value
+Debug: 111 33 adapter.c:219 adapter_khz_to_speed(): have adapter set up
+Info : 112 33 adapter.c:179 adapter_init(): clock speed 2000 kHz
+Debug: 113 33 openocd.c:134 handle_init_command(): Debug Adapter init complete
+Debug: 114 33 command.c:155 script_debug(): command - transport init
+Debug: 115 33 transport.c:219 handle_transport_init(): handle_transport_init
+Debug: 116 33 command.c:155 script_debug(): command - dap init
+Debug: 117 33 arm_dap.c:97 dap_init_all(): Initializing all DAPs ...
+Debug: 118 33 arm_dap.c:121 dap_init_all(): DAP stm32f4x.cpu configured by default to use ADIv5 protocol
+Debug: 119 33 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 120 34 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 121 34 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 122 35 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 123 37 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 124 37 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 125 38 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 126 39 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 127 39 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 128 41 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 129 42 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 130 42 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 131 43 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 132 45 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 133 45 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 134 46 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 135 47 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 136 47 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 137 49 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 138 50 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 139 50 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 140 51 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 141 52 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 142 52 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 143 54 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 144 55 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 145 55 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 146 56 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 147 58 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 148 58 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 149 59 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 150 60 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 151 60 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 152 61 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 153 63 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 154 63 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 155 64 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 156 65 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 157 65 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 158 66 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 159 68 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 160 68 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 161 69 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 162 70 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 163 70 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 164 72 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 165 73 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 166 73 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 167 74 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 168 75 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 169 75 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 170 77 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 171 78 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 172 78 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 173 79 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 174 80 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 175 80 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 176 82 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 177 83 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 178 83 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 179 84 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 180 85 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 181 85 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 182 87 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 183 88 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 184 88 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 185 89 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 186 91 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 187 91 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 188 92 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 189 93 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 190 93 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 191 94 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 192 96 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 193 96 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 194 97 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 195 98 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 196 98 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 197 99 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 198 101 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 199 101 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 200 102 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 201 103 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 202 103 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 203 105 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 204 106 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 205 106 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 206 107 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 207 108 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 208 108 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 209 110 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 210 111 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 211 111 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 212 112 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 213 114 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 214 114 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 215 115 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 216 116 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 217 116 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 218 118 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 219 119 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 220 119 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 221 120 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 222 121 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 223 121 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 224 123 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 225 124 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 226 124 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 227 125 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 228 127 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 229 127 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 230 128 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 231 129 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 232 129 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 233 131 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 234 132 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 235 132 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 236 133 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 237 134 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 238 134 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 239 136 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 240 137 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 241 137 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 242 138 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 243 140 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 244 140 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 245 141 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 246 142 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 247 142 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 248 144 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 249 145 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 250 145 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 251 146 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 252 147 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 253 147 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 254 149 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 255 150 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 256 150 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 257 151 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 258 153 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 259 153 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 260 154 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 261 155 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 262 155 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 263 156 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 264 157 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 265 158 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 266 159 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 267 160 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 268 160 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 269 161 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 270 162 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 271 162 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 272 164 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 273 165 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 274 165 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 275 166 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 276 167 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 277 167 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 278 169 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 279 170 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 280 170 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 281 171 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 282 172 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 283 172 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 284 174 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 285 175 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 286 175 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 287 176 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 288 177 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 289 177 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 290 179 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 291 180 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 292 180 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 293 181 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 294 182 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 295 182 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 296 184 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 297 185 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 298 185 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 299 186 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 300 188 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 301 188 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 302 189 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 303 190 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 304 190 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 305 191 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 306 193 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 307 193 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 308 194 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 309 195 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 310 195 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 311 197 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 312 198 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 313 198 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 314 199 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 315 201 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 316 201 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 317 202 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 318 203 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 319 203 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+log.txt: command not found
+Debug: 320 205 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 321 206 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 322 206 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 323 207 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 324 209 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 325 209 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 326 210 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 327 211 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 328 211 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 329 213 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 330 214 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 331 214 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 332 215 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 333 216 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 334 216 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 335 218 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 336 219 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 337 219 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 338 221 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 339 222 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 340 222 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 341 224 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 342 225 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 343 225 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 344 227 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 345 228 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 346 228 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 347 229 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 348 231 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 349 231 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 350 232 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 351 234 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 352 234 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 353 235 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 354 236 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 355 236 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 356 238 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 357 239 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 358 239 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 359 241 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 360 242 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 361 242 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 362 244 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 363 245 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 364 245 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 365 246 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 366 248 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 367 248 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 368 249 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 369 251 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 370 251 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 371 252 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 372 253 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 373 253 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 374 255 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 375 256 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 376 256 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 377 258 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 378 259 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 379 259 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 380 261 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 381 262 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 382 262 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 383 263 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 384 265 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 385 265 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 386 266 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 387 268 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 388 268 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 389 269 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 390 270 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 391 270 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 392 272 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 393 273 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 394 273 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 395 275 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 396 276 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 397 276 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 398 278 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 399 279 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 400 279 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 401 280 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 402 282 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 403 282 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 404 283 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 405 285 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 406 285 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 407 286 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 408 288 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 409 288 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 410 289 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 411 291 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 412 291 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 413 292 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 414 294 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 415 294 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 416 295 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 417 297 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 418 297 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 419 298 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 420 300 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 421 300 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 422 301 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 423 303 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 424 303 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 425 304 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 426 305 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 427 306 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 428 307 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 429 308 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 430 308 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 431 310 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 432 311 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 433 311 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 434 313 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 435 314 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 436 314 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 437 316 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 438 317 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 439 317 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 440 319 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 441 320 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 442 320 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 443 321 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 444 323 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 445 323 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 446 324 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 447 326 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 448 326 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 449 327 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 450 328 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 451 328 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 452 330 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 453 331 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 454 331 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 455 333 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 456 334 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 457 334 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 458 336 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 459 337 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 460 337 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 461 339 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 462 340 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 463 340 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 464 342 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 465 343 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 466 343 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 467 345 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 468 346 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 469 346 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 470 347 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 471 349 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 472 349 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 473 350 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 474 352 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 475 352 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 476 353 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 477 355 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 478 355 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 479 356 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 480 357 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 481 357 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 482 359 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 483 360 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 484 360 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 485 362 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 486 363 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 487 363 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 488 365 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 489 366 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 490 366 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 491 368 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 492 369 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 493 369 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 494 370 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 495 372 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 496 372 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 497 373 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 498 375 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 499 375 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 500 376 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 501 378 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 502 378 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 503 379 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 504 381 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 505 381 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 506 382 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 507 383 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 508 383 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 509 385 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 510 386 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 511 386 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 512 388 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 513 389 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 514 389 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 515 390 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 516 392 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 517 392 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 518 393 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 519 395 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 520 395 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 521 396 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 522 398 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 523 398 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 524 399 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 525 400 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 526 400 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 527 402 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 528 403 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 529 403 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 530 404 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 531 406 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 532 406 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 533 407 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 534 409 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 535 409 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 536 410 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 537 412 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 538 412 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 539 413 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 540 415 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 541 415 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 542 416 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 543 418 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 544 418 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 545 419 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 546 420 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 547 420 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 548 422 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 549 423 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 550 423 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 551 425 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 552 426 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 553 426 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 554 428 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 555 429 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 556 429 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 557 430 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 558 432 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 559 432 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 560 433 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 561 435 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 562 435 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 563 436 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 564 438 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 565 438 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 566 439 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 567 441 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 568 441 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 569 442 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 570 443 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 571 444 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 572 445 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 573 446 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 574 446 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 575 448 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 576 449 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 577 449 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 578 451 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 579 452 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 580 452 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 581 454 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 582 455 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 583 455 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 584 457 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 585 458 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 586 458 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 587 459 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 588 461 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 589 461 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 590 462 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 591 464 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 592 464 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 593 465 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 594 467 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 595 467 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 596 468 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 597 470 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 598 470 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 599 471 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 600 473 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 601 473 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 602 474 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 603 475 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 604 476 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 605 477 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 606 478 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 607 478 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 608 480 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 609 481 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 610 481 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 611 483 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 612 484 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 613 484 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 614 486 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 615 487 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 616 487 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 617 489 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 618 490 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 619 490 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 620 492 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 621 493 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 622 493 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 623 494 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 624 496 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 625 496 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 626 497 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 627 499 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 628 499 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 629 500 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 630 501 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 631 501 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 632 503 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 633 504 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 634 504 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 635 506 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 636 507 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 637 507 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 638 509 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 639 510 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 640 510 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 641 512 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 642 513 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 643 513 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 644 514 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 645 516 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 646 516 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 647 517 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 648 519 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 649 519 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 650 520 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 651 522 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 652 522 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 653 523 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 654 525 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 655 525 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 656 526 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 657 527 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 658 527 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 659 529 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Debug: 660 530 ftdi.c:1214 ftdi_swd_switch_seq(): JTAG-to-DORMANT
+Debug: 661 530 ftdi.c:1229 ftdi_swd_switch_seq(): DORMANT-to-SWD
+Debug: 662 532 ftdi.c:1209 ftdi_swd_switch_seq(): JTAG-to-SWD
+Error: 663 533 adi_v5_swd.c:366 swd_connect_single(): Error connecting DP: cannot read IDR
+Debug: 664 533 command.c:544 run_command(): Command 'dap init' failed with error code -400
+User : 665 533 command.c:608 command_run_line(): 
+Debug: 666 533 command.c:544 run_command(): Command 'init' failed with error code -4
+User : 667 533 command.c:608 command_run_line(): 
+Debug: 668 533 target.c:2199 target_free_all_working_areas_restore(): freeing all working areas
+Debug: 669 534 ftdi.c:1224 ftdi_swd_switch_seq(): SWD-to-DORMANT
+Debug: 670 534 ftdi.c:1234 ftdi_swd_switch_seq(): DORMANT-to-JTAG
