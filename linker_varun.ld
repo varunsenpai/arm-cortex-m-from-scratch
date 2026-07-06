@@ -31,8 +31,8 @@ SECTIONS
         . = ALIGN(4);
         _sdata = . ;
         *(.data)
+	. = ALIGN(4);
         _edata = . ;
-        . = ALIGN(4);
     } >RAM AT> FLASH
 
     _sidata = LOADADDR(.data);
@@ -41,6 +41,7 @@ SECTIONS
         . = ALIGN(4);
         _sbss = . ;
         *(.bss)
+	. = ALIGN(4);
         _ebss = . ;
     } > RAM
 }

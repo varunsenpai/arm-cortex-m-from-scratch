@@ -12,6 +12,8 @@ void Usage_Handler();
 void copyData();
 void zeroBss();
 
+int add(int a, int b);
+
 extern unsigned char _sidata;
 extern unsigned char _sdata;
 extern unsigned char _edata;
@@ -19,11 +21,12 @@ extern unsigned char _sbss;
 extern unsigned char _ebss;
 
 int y = 10;
+int z;
 
 int main();
 
 __attribute__((section(".isr_vector"), used))
-isr_vector g_pfnVectors[] = {
+const isr_vector g_pfnVectors[] = {
     (isr_vector)0x020002000,
     Reset_Handler,
     NMI_Handler,
@@ -75,10 +78,19 @@ void Usage_Handler()
     return;
 }
 
+int add(int a, int b)
+{
+	return a+b;
+}
+
 int main()
 {
     unsigned int x = y;
-    ++x;
+    int abc = add(1,2);
+    ++abc;
+    ++z;
+    ++z;
+
     while(1);
 }
 
@@ -101,7 +113,7 @@ void zeroBss()
     unsigned char *startbss = &_sbss;
     unsigned char *endbss = &_ebss;
 
-    while(!(endbss - startbss)) 
+    while(endbss - startbss)
     {
         *startbss = 0;
         ++startbss;
