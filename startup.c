@@ -12,19 +12,13 @@ void Usage_Handler();
 void copyData();
 void zeroBss();
 
-int add(int a, int b);
-
 extern unsigned char _sidata;
 extern unsigned char _sdata;
 extern unsigned char _edata;
 extern unsigned char _sbss;
 extern unsigned char _ebss;
 extern unsigned char _top_stack;
-
-int y = 10;
-int z;
-
-int main();
+extern int main();
 
 __attribute__((section(".isr_vector"), used))
 const isr_vector g_pfnVectors[] = {
@@ -77,22 +71,6 @@ void SecureFault_Handler()
 void Usage_Handler()
 {
     return;
-}
-
-int add(int a, int b)
-{
-	return a+b;
-}
-
-int main()
-{
-    unsigned int x = y;
-    int abc = add(1,2);
-    ++abc;
-    ++z;
-    ++z;
-
-    while(1);
 }
 
 void copyData()
