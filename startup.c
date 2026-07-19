@@ -19,6 +19,7 @@ extern unsigned char _sdata;
 extern unsigned char _edata;
 extern unsigned char _sbss;
 extern unsigned char _ebss;
+extern unsigned char _top_stack;
 
 int y = 10;
 int z;
@@ -27,7 +28,7 @@ int main();
 
 __attribute__((section(".isr_vector"), used))
 const isr_vector g_pfnVectors[] = {
-    (isr_vector)0x020002000,
+    (isr_vector)((&_top_stack)),
     Reset_Handler,
     NMI_Handler,
     HardFault_Handler,
