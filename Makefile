@@ -1,16 +1,26 @@
-.PHONY = elf
+SRC_FLDRS := App common
 
-object = startup
+.PHONY = elf clean $(SRC_FLDRS) 
 
-SRCS = startup.c main.c
-OBJS = $(SRCS:.c=.o)
-TARGET = my_bin.elf
+TARGET = build/my_bin.elf
 
-elf: $(OBJS)
-	arm-none-eabi-gcc -O0 -mcpu=cortex-m4 -nostdlib -nostartfiles -g -T linker_varun.ld $^ -o $(TARGET)
+OBJS_DIR := build
 
-%.o : %.c
-	arm-none-eabi-gcc -g -mcpu=cortex-m4 -mthumb -c $< -o $@
+export PROJ_ROOT = $(CURDIR)
+
+OBJS = $(wildcard $(OBJS_DIR)/*.o)
+
+all : elf link
+
+elf: $(SRC_FLDRS)
+	@for dir in $(SRC_FLDRS); do \
+		$(MAKE) -C $$dir; \
+	done
+	
+
+link: elf
+	arm-none-eabi-gcc -O0 -mcpu=cortex-m4 -nostdlib -nostartfiles -g -T linker_varun.ld $(OBJS) -o $(TARGET)
+
 
 ocd:
 	openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program $(TARGET) verify reset exit"
@@ -20,4 +30,4 @@ gdb:
 	gdb-multiarch $(TARGET)
 
 clean:
-	rm -f *.o $(TARGET)
+	@rm -f build/*.o $(TARGET)
